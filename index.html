@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>🔍 Subnet Scanner</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script> 
+    </head>
+    <body>
+        <div id="top-bar">
+            <a onclick="toggleSettings()">⚙️</a>
+        </div>
+
+        <div id="settings">
+            <h1>Settings</h1>
+            <p>IP Range</p>
+            <div class="range-input">
+                <input><p>to</p><input>
+                <button onclick="addRange()">Add</button>
+            </div>
+            <p>Static IP</p>
+            <div class="static-ip">
+                <input>
+                <button onclick="addRange()">Add</button>
+            </div>
+            <p>Blacklist</p>
+            <div lass="blacklist"> 
+                <input>
+                <button onclick="addRange()">Add</button>
+            </div>
+        </div>
+
+        <div id="tiles">
+            <div class="tile">
+                <img src="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg">
+                <h2>jordan-huitema/Subnet-Scanner at dev</h2>
+                <p>https://github.com/jordan-huitema/Subnet-Scanner/tree/dev</p>
+            </div>
+        </div>
+    </body>
+</html>
