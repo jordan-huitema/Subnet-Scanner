@@ -1,2 +1,4 @@
 # Subnet-Scanner
-Scan a subnet and show links to all hosted sites
+I have a lot of services on my home network now, each with their own management page.
+
+This sites purpose is to scan a set subnet range (or spesific address list) and create links to all sites on one page
