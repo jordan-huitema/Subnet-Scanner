@@ -39,13 +39,13 @@ body #top-bar {
   flex-direction: row-reverse;
   border-radius: 0 0 5px 5px;
 }
-body #top-bar a {
-  font-size: 40px;
-  text-align: center;
-  line-height: 50px;
-  text-align: center;
+body #top-bar button {
+  width: 50px;
+  font-size: 30px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
 }
-body #top-bar a:hover {
+body #top-bar button:hover {
   transform: scale(1.1, 1.1);
   animation: rotating 2s linear infinite;
 }
