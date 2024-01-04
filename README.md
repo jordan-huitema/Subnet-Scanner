@@ -6,4 +6,5 @@ This sites purpose is to scan a set subnet range (or spesific address list) and 
 TODO
 -Add Fetch JS
 -Add Tiles JS
--Add browser caching
+-Fix browser caching (forgot i need to store as json)
+-Complete get range func
