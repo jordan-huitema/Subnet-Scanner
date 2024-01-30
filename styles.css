@@ -63,7 +63,7 @@ body #settings h1 {
   margin-top: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-body #settings .range-input {
+body #settings .rangeInput {
   display: flex;
 }
 body #settings div {

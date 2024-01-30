@@ -10,7 +10,7 @@ There's not much to this so ill just use bullet points of the main components in
 
 #### WebGUI Interface
 
-* [X] Hosted by server, Will probably add a webroute on my PiHole
+* [X] Hosted by server (Will probably add a webroute on my PiHole LXC)
 * [X] Basic scaleable layout, just a page with a settings button and tiles for each discovered address
 
 #### Configurable settings (Cached to browser)
@@ -22,7 +22,7 @@ There's not much to this so ill just use bullet points of the main components in
 
 #### Storage
 
-* [ ] Get and Store Settings to browser cache
+* [X] Get and Store Settings to browser cache
 
 #### Scanner
 
@@ -36,7 +36,7 @@ There's not much to this so ill just use bullet points of the main components in
 
 ##### Extra
 
-* [ ] Add tiles to storage
+* [X] Add tiles to storage
   * [ ] Add live "up" and "down" connection indicators to tiles
 * [ ] Add buttons to Tiles
   * [ ] Remove
@@ -45,6 +45,7 @@ There's not much to this so ill just use bullet points of the main components in
   * [ ] Port Range
   * [ ] Port Blacklist
   * [ ] Port Range Blacklist
+* [ ] Make JS Async (no need but why not)
 
 ## TODO
 
@@ -52,3 +53,11 @@ There's not much to this so ill just use bullet points of the main components in
 * Add Tiles JS
 * Fix browser caching (forgot i need to store as json)
 * Complete get range func
+
+## Notes
+
+To start editing
+
+* Start LiveServer, Host IP is http://10.1.1.2:5500/index.html
+* Start Sass, sass --watch input.scss styles.css
+* Try not to procrastonate
