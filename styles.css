@@ -63,15 +63,25 @@ body #settings h1 {
   margin-top: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-body #settings .rangeInput {
+body #settings h3 {
+  margin-bottom: 10px;
+}
+body #settings .rangeInput, body #settings .staticIp, body #settings .blacklist {
   display: flex;
 }
+body #settings .staticIp input:nth-last-of-type(1), body #settings .blacklist input:nth-last-of-type(1) {
+  width: 35px;
+}
 body #settings div {
-  height: 20px;
   margin: 0px 10px 10px 10px;
 }
 body #settings p {
-  margin: 0 10px;
+  margin: 0 5px;
+  min-width: 25px;
+  text-align: center;
+}
+body #settings input {
+  width: 100px;
 }
 body #settings button {
   margin: 0 5px;

@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>🔍 Subnet Scanner</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-        
-    </head>
-    <body>
-        <div id="top-bar">
-            <button onclick="toggleSettings()">⚙️</button>
-        </div>
 
-        <div id="settings">
-            <h1>Settings</h1>
-            <p>IP Range</p>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>🔍 Subnet Scanner</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div id="top-bar">
+        <button onclick="toggleSettings()">⚙️</button>
+    </div>
+
+    <div id="settings">
+        <h1>Settings</h1>
+        <h3>IP Range</h3>
+        <div id="ipRanges">
             <div class="rangeInput">
-                <input><p>to</p><input>
+                <input class="ip" ><p>to</p><input class="ip" >
                 <button onclick="addDiv('rangeInput')">Add</button>
             </div>
-            <p>Static IP</p>
+        </div>
+        <h3>Static IP</h3>
+        <div id="ipWhitelist">
             <div class="staticIp">
-                <input>
+                <input class="ip" ><p>port</p><input class="port" >
                 <button onclick="addDiv('staticIp')">Add</button>
             </div>
-            <p>Blacklist</p>
-            <div class="blacklist"> 
-                <input>
+        </div>
+        <h3>Blacklist</h3>
+        <div id="ipBlacklist">
+            <div class="blacklist">
+                <input class="ip" ><p>port</p><input class="port">
                 <button onclick="addDiv('blacklist')">Add</button>
             </div>
         </div>
+    </div>
 
-        <div id="tiles">
-            <div class="tile">
-                <img src="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg">
-                <h2>jordan-huitema/Subnet-Scanner at dev</h2>
-                <p>https://github.com/jordan-huitema/Subnet-Scanner/tree/dev</p>
-            </div>
+    <div id="tiles">
+        <div class="tile">
+            <img src="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg">
+            <h2>jordan-huitema/Subnet-Scanner at dev</h2>
+            <p>https://github.com/jordan-huitema/Subnet-Scanner/tree/dev</p>
         </div>
-    </body>
-    <script src="script.js"></script> 
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>

@@ -10,8 +10,9 @@ function onLoad() { // load all stored id elements
 function updateStorage() { //Wipe storage and replace with relevant elements
     // Map of DOM, Arrays of classes to select
     storage = {
-        settings: document.getElementById('settings').innerHTML,
-        tiles: document.getElementById('tiles').innerHTML
+        ipRanges: document.getElementById('ipRanges').innerHTML,
+        ipWhitelist: document.getElementById('ipWhitelist').innerHTML,
+        ipBlacklist: document.getElementById('ipBlacklist').innerHTML
     }
     Object.keys(storage).forEach(key => {
         localStorage.setItem(key,JSON.stringify([storage[key]]))
