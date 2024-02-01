@@ -16,7 +16,7 @@ There's not much to this so ill just use bullet points of the main components in
 #### Configurable settings (Cached to browser)
 
 * [X] Select IP range x.x.x.x - x.x.x.x
-* [ ] Select Spesific IP and optional port
+* [X] Select Spesific IP and optional port
 * [X] Blacklisted IP's
   (Might add a blacklist button to tiles, not really needed for my uses)
 
