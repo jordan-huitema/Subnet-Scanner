@@ -1,32 +1,46 @@
 let storage = { ...localStorage }
 
 //JSON wont stringify sub-objects so i have to make this recurssive strigifyer
-let jsonIsAPain = {
-    toString: (obj) => {
-        console.log('IN', obj)
-        // check type
-        let type = typeof obj
-        type == 'object' && Array.isArray(obj) ? type = 'array' : null
-        // check for sub objects or arrays
-        console.log(type)
-        if (type == 'object') {
-            console.log('type Object', obj)
-            Object.keys(obj).forEach(key => {
-                obj[key] = this.toString(obj[key])
-            })
-        } else if (type == 'array') {
-            console.log('type Array', obj)
-            obj.forEach((elm, key) => {
-                obj[key] = this.toString(obj[key])
-            })
-        }
-        obj = JSON.stringify(obj)
-        console.log('OUT', obj)
-        return obj
-    },
-    toObject: (obj) => {
+function toString(input) {
+    let output
+    // console.log('IN', input)
+    // check type
+    let type = typeof input
+    type == 'object' && Array.isArray(input) ? type = 'array' : null
+    // check for sub objects or arrays
+    if (type == 'object') {
+        output = {}
+        // console.log('type Object', 'length')
+        Object.entries(input).forEach(([key, val]) => {
+            output[key] = toString(val)
+        })
+        output = JSON.stringify(output)
+    } else if (type == 'array') {
+        output = []
+        // console.log('type Array')
+        input.forEach((elm) => { output.push(tostring(elm)) })
+    } else return input
+    // console.log('OUT', output)
+    return output
+}
 
+function toObject(input) {
+    try {
+        input = JSON.parse(input)
+    } catch {
+        // console.log('non array or object encountered')
     }
+    // console.log('parsed: ', input)
+    // check type
+    let type = typeof input
+    type == 'object' && Array.isArray(input) ? type = 'array' : null
+    // check for sub objects or arrays
+    if (type == 'object') {
+        Object.entries(input).forEach(([key,val])=> {
+            input[key] = toObject(val)
+        })
+    }
+    return input
 }
 
 function onLoad() { // load all stored id elements
@@ -48,15 +62,21 @@ function updateStorage() { //Wipe storage and replace with relevant elements
         if (val.length > 0) {
             let newObj = {}
             Object.entries(val).forEach(([key, val]) => {
-                newObj[key] = val.parentNode
+                newObj[key] = {
+                    innerHTML: val.parentNode.innerHTML,
+                    innerText: val.parentNode.innerText
+                }
             })
             storage[key] = newObj
-            console.log(storage[key])
-            // console.log(key, jsonIsAPain.toString(storage[key]))
-        }
+            // console.log(newObj)
+        } else delete storage[key]
     })
     // localStorage.setItem(key, jsonIsAPain.toString(storage[key]))
+
     console.log(storage)
+    console.log(toString(storage))
+    console.log(toObject(toString(storage)))
+
 }
 
 function toggleSettings() {
