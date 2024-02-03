@@ -51,8 +51,12 @@ function onLoad() { // load all stored elements
         Object.entries(idVal).forEach(([cls, clsVal]) => {
             // console.log(cls, clsVal)
             Object.entries(clsVal).forEach(([node, nodeVal]) => {
-                document.querySelectorAll(`#${id} .${cls} ${nodeVal.name}`)[node].value = nodeVal.val
-                try { node % 2 == 0 ? addDiv(cls,false) : null } catch {}
+                // E.g find all nodes matching (#ipRanges .rangeInput input) and set their value based on the current node index
+                let nodeSearch = document.querySelectorAll(`#${id} .${cls} ${nodeVal.name}`)
+                nodeSearch[node].value = nodeVal.val
+                node++
+                nodeSearch[node].value = nodeVal.val2
+                addDiv(cls, false)
             })
         })
     })
@@ -63,25 +67,33 @@ function updateStorage() { //Wipe storage and replace with relevant elements
     // Map of DOM, Arrays of classes to select
     storage = {
         ipRanges: document.querySelectorAll('div.rangeInput > input[disabled]'),
-        ipWhitelist: document.querySelectorAll(`div.staticIp > button[onclick="removeDiv(this.parentNode)"]`),
-        ipBlacklist: document.querySelectorAll(`div.blacklist > button[onclick="removeDiv(this.parentNode)"]`)
+        ipWhitelist: document.querySelectorAll(`div.staticIp > input[disabled]`),
+        ipBlacklist: document.querySelectorAll(`div.blacklist > input[disabled]`)
     }
+    // Find all used input fields in listed storage object, Build new entry and update
     Object.entries(storage).forEach(([key, val]) => {
         if (val.length > 0) {
             let newObj = {}
             Object.entries(val).forEach(([key, val]) => {
-                newObj[`${val.parentNode.className}`] ? null
-                    : newObj[`${val.parentNode.className}`] = {}
-                newObj[`${val.parentNode.className}`][key] = {
-                    name: val.tagName,
-                    val: val.value
+                // Create new key for class if none exists
+                newObj[`${val.parentNode.className}`] ? null : newObj[`${val.parentNode.className}`] = {}
+                // Create new input node entry
+                if ((key % 2) == 1) {
+                    // add every other value to the previous key
+                    newObj[`${val.parentNode.className}`][key - 1].val2 = val.value
+                } else {
+                    newObj[`${val.parentNode.className}`][key] = {
+                        name: val.tagName,
+                        val: val.value,
+                        class: val.className
+                    }
                 }
             })
             storage[key] = newObj
             localStorage.setItem(key, toString(newObj))
         } else delete storage[key]
     })
-    console.log(toObject(toString(storage)))
+    // console.log(toObject(toString(storage)))
 }
 
 function toggleSettings() {
@@ -130,10 +142,22 @@ function buildTiles() {
     // console.log(getIp())
 }
 
-function getIp() {
-    //ranges
-    let ranges = document.getElementsByClassName("rangeInput")
-    return ranges
+function ipList() {
+    let ips = []
+    console.log(storage)
+    console.log('Grabbing IP List')
+    Object.entries(storage).forEach(([id, idVal]) => {
+        console.log(`- ${id}`)
+        Object.entries(idVal).forEach(([cls, clsVal]) => {
+            Object.entries(clsVal).forEach(([ip, ipVal]) => {
+                console.log(`-- ${ipVal.val} to ${ipVal.val}`)
+                
+                
+
+            })
+        })
+    })
 }
 
 onLoad()
+ipList()
