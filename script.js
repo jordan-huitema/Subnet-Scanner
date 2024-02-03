@@ -143,20 +143,124 @@ function buildTiles() {
 }
 
 function ipList() {
-    let ips = []
+    let ips = {}
     console.log(storage)
     console.log('Grabbing IP List')
     Object.entries(storage).forEach(([id, idVal]) => {
         console.log(`- ${id}`)
         Object.entries(idVal).forEach(([cls, clsVal]) => {
             Object.entries(clsVal).forEach(([ip, ipVal]) => {
-                console.log(`-- ${ipVal.val} to ${ipVal.val}`)
-                
-                
+                console.log(`-- ${ipVal.val} to ${ipVal.val2}`)
+                if (typeof ipVal.val2 == 'string') {
+                    // ips.push(ipVal.val)
+                    ips[ipVal.val] = true
+                    // Split Ips for comparison
+                    let a = ipVal.val.split('.'), b = ipVal.val2.split('.'), diff = []
+                    console.log('a and b =', a, b)
+                    a.forEach((val, idx) => {
+                        // calculate diffrence
+                        diff.push(b[idx] - val)
+                        diff[idx] < 0 ? diff[idx] = diff[idx] + 255 : null
+                    })
+                    console.log(diff)
+                    // Itterate through diff arr and check diffs
+                    // If there is a diffrence in range
+                    if (diff.reduce((a, c) => a + c) !== 0) {
+                        // Calculate the number of ip's between
+                        // let sum = 0
+                        // diff.forEach((val, idx) => {
+                        //     console.log(idx, val)
+                        //     val > 0 ? sum = sum + val : null
+                        //     idx < 3 ? sum = sum * 255 : null
+                        // })
+                        // console.log('Sum = ', sum)
 
+                        // Itterate through diff and add any ips between differing ranges
+                        const func = (diffIdx = 0, add = false) => {
+                            // console.log(diffIdx)
+                            // Check if shift is active
+                            if (add && diffIdx < 4) {
+                                // console.log('Adding', diffIdx, a)
+                                // loop through index of a and itterate until 255
+                                while (a[diffIdx] < 256) {
+                                    // Each itteration, add currect ip and callback to itterate to itterate subnets
+                                    ips[a.join('.')] = true
+                                    func(diffIdx + 1, true)
+                                    a[diffIdx]++
+                                }
+                                a[diffIdx] = 0
+                            } else {
+                                // Check for diffrence, if no move to next idx
+                                if (diff[diffIdx] == 0) {
+                                    // console.log('no Diff')
+                                    func(++diffIdx)
+                                } else {
+                                    // console.log('Diff')
+                                    // If idx has diffrence, callback with shift until diff = 0
+                                    while (diff[diffIdx] > 0) {
+                                        func(diffIdx + 1, true)
+                                        a[diffIdx]++
+                                        ips[a.join('.')] = true
+                                        diff[diffIdx]--
+                                    }
+                                }
+                            }
+                        }
+                        func()
+                        // Create new ips from first ip until sum is at 0
+                        // a = [ "10", "1", "1", "1" ]
+                        // let idx = 3, pos = 1
+                        // while (sum > 0) {
+                        //     // Check and itterate 1st index of a
+                        //     sum--
+                        //     if (diff[0] > 0) {
+
+                        //     }
+                        //     while (sum > 0) {
+                        //         // Check and itterate 2nd index of a
+                        //         sum--
+                        //         if (diff[1] > 0) {
+
+                        //         }
+                        //         while (sum > 0) {
+                        //             // Check and itterate 3rd index of a
+                        //             sum--
+                        //             if (diff[2] > 0) {
+
+                        //             }
+                        //             while (sum > 0) {
+                        //                 // Check and itterate 4th index of a
+                        //                 sum--
+                        //                 if (diff[3] > 0) {
+
+                        //                 }
+                        //             }
+                        //         }
+                        //     }
+                        // }
+                        // select last subnet and itterate
+                        // if (a[idx] < 255) {
+                        //     a[idx]++
+                        //     ips[a.join('.')] = true
+                        // } // if subnet hits 255, reset and itterate next subnet by 1
+                        // else if (a[idx - pos] < 255) {
+                        //     a[idx] = 0
+                        //     a[idx - pos]++
+
+                        // } else {
+                        //     a[idx - pos] = 0
+                        //     pos++
+                        // }
+
+                    }
+
+                } else ips[ipVal.val] = ipVal.val2
             })
         })
     })
+    console.log(ips)
+    // console.log(ips['10.1.2.1'])
+    // console.log(ips['10.2.1.1'])
 }
 
 onLoad()

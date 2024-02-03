@@ -38,6 +38,9 @@ There's not much to this so ill just use bullet points of the main components in
 
 * [X] Add tiles to storage
   * [ ] Add live "up" and "down" connection indicators to tiles
+* [ ] Add restrictions to inputs
+  * [ ] Input must be valid ip or port
+  * [ ] input 1 must be smaller than input 2
 * [ ] Add buttons to Tiles
   * [ ] Remove
   * [ ] Blacklist
@@ -46,13 +49,6 @@ There's not much to this so ill just use bullet points of the main components in
   * [ ] Port Blacklist
   * [ ] Port Range Blacklist
 * [ ] Make JS Async (no need but why not)
-
-## TODO
-
-* Add Fetch JS
-* Add Tiles JS
-* Fix browser caching (forgot i need to store as json)
-* Complete get range func
 
 ## Notes
 
