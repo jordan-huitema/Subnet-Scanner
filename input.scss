@@ -61,6 +61,12 @@ body {
             transform: scale(1.1, 1.1);
             animation: rotating 2s linear infinite;
         }
+
+        h1 {
+            flex-grow: 1;
+            margin: 0 25px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
     }
 
     #settings {
@@ -71,7 +77,7 @@ body {
         position: absolute;
         top: 55px;
         right: 5px;
-        padding:15px;
+        padding: 15px;
         // display: none;
 
         h1 {
@@ -83,41 +89,70 @@ body {
             margin-bottom: 10px;
         }
 
-        .rangeInput, .staticIp, .blacklist{
+        .rangeInput,
+        .staticIp,
+        .blacklist {
             display: flex;
         }
 
-        .staticIp, .blacklist{
-            input:nth-last-of-type(1){
+        .staticIp,
+        .blacklist {
+            input {
+                flex-grow: 1;
+            }
+
+            input:nth-last-of-type(1) {
                 width: 35px;
             }
         }
 
         div {
-            margin:0px 10px 10px 10px
+            margin: 0px 10px 10px 10px
         }
+
         p {
             margin: 0 5px;
             min-width: 25px;
             text-align: center;
         }
+
         input {
             width: 100px;
         }
-        button {margin: 0 5px}
+
+        button {
+            margin: 0 5px
+        }
     }
 
-    .tile {
-        border: 1px solid rgb(201, 201, 201);
-        border-radius: 5px;
-        box-shadow: 5px 5px rgba(0, 0, 0, 0.068);
-        max-width: 250px;
-        margin: 15px;
-        padding: 10px;
-        text-align: center;
+    #tiles {
+        display: flex;
 
-        img { max-width: 150px;}
-        h2{margin-bottom: 0;}
-        p{color: rgba(0, 0, 0, 0.514);}
+        .tile:first-of-type {
+            display: none;
+        }
+
+        .tile {
+            border: 1px solid rgb(201, 201, 201);
+            border-radius: 5px;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.068);
+            max-width: 250px;
+            margin: 15px;
+            padding: 10px;
+            text-align: center;
+
+            img {
+                max-width: 150px;
+            }
+
+            h2 {
+                margin-bottom: 0;
+            }
+
+            p {
+                color: rgba(0, 0, 0, 0.514);
+            }
+        }
     }
+
 }
