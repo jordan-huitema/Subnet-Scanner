@@ -219,7 +219,7 @@ async function fetchPromise(ip) {
                 })
         })
 }
-
+// TODO remove awaits so JS can run all querys at once, also add timeout to fetch to avoid hangs on no response
 async function fetchIps(listObj) { // INPUT = { "10.1.1.10": 1010, "10.1.1.1": true, "10.1.1.2": true}
     let keys = Object.keys(listObj)
     // Try all urls
