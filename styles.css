@@ -101,7 +101,7 @@ body #settings button {
 body #tiles {
   display: flex;
 }
-body #tiles .tile:first-of-type {
+body #tiles .tile:last-of-type {
   display: none;
 }
 body #tiles .tile {

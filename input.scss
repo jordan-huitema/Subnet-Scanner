@@ -128,7 +128,7 @@ body {
     #tiles {
         display: flex;
 
-        .tile:first-of-type {
+        .tile:last-of-type {
             display: none;
         }
 

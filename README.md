@@ -6,7 +6,18 @@ This sites purpose is to scan a set subnet range (or spesific address list) and 
 
 ## Plan
 
-There's not much to this so ill just use bullet points of the main components instead of a map
+~~There's not much to this so ill just use bullet points of the main components instead of a map~~
+
+Originally I planned on making this a client side application, however, I have run into a dead end with client side fetch requests running into cors issues so i can detect sites/services but i cant actully get an index page.
+
+I have also greatly underestimated JS performance and this program is memery heavy and proccess intensive.
+
+The plan now is to move the site to a server side backend running on a LXC proxmox container on my home server, and a front end that simply caches setttings, tiles and requests the server for info.
+
+<details>
+<summary>V1</summary>
+
+![V1](images/V1_example.png "Title")
 
 #### WebGUI Interface
 
@@ -26,13 +37,13 @@ There's not much to this so ill just use bullet points of the main components in
 
 #### Scanner
 
-* [ ] Ping a range of input IP addresses on all ports
+* [X] Ping a range of input IP addresses on all ports
 * [ ] Fetch detected sites Index Page
 
 #### Tiler
 
-* [ ] Use Input index page to grab site tilte and favicon
-* [ ] Push new site tile to web GUI (showing Favicon, Title and address)
+* [X] Use Input index page to grab site tilte and favicon
+* [X] Push new site tile to web GUI (showing Favicon, Title and address)
 
 ##### Extra
 
@@ -57,3 +68,9 @@ To start editing
 * Start LiveServer, Host IP is http://10.1.1.2:5500/index.html
 * Start Sass, sass --watch input.scss styles.css
 * Try not to procrastonate
+
+</details>
+<details open>
+<summary>V2</summary>
+
+</details>

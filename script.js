@@ -78,10 +78,10 @@ function updateStorage() { //Wipe storage and replace with relevant elements
                 // Create new key for class if none exists
                 newObj[`${val.parentNode.className}`] ? null : newObj[`${val.parentNode.className}`] = {}
                 // Create new input node entry
-                    newObj[`${val.parentNode.className}`][key] = {
-                        name: val.tagName,
-                        val: val.value,
-                        class: val.className
+                newObj[`${val.parentNode.className}`][key] = {
+                    name: val.tagName,
+                    val: val.value,
+                    class: val.className
                 }
             })
             storage[key] = newObj
@@ -214,7 +214,7 @@ function fetchPromise(ip) {
 async function fetchIps(listObj) { // INPUT = { "10.1.1.10": 1010, "10.1.1.1": true, "10.1.1.2": true}
     let keys = Object.keys(listObj)
     // Try all urls
-    let arr = ['.', '..', '...']
+    let arr = []
     let scanLog = document.getElementById('scanText')
     for (i = 0; i < keys.length; i++) {
         const key = keys[i], val = listObj[keys[i]]
@@ -222,22 +222,25 @@ async function fetchIps(listObj) { // INPUT = { "10.1.1.10": 1010, "10.1.1.1": t
             // try base url
             scanLog.innerText = `Scanning: ${key}`
             console.log('trying ', key)
-            await fetchPromise(`${key}`)
+            arr.push(fetchPromise(`${key}`)
                 .then(succ => { },
                     async fail => { // try url with port
                         if (typeof val == 'number') {
                             // console.log('port')
-                            await fetchPromise(`${key}:${val}`).catch(err => { })
+                            arr.push(fetchPromise(`${key}:${val}`).catch(err => { }))
                         } else { // generate ports within range
                             // console.log('no port')
                             for (j = portRange[0]; j < portRange[1]; j++) {
                                 // console.log('trying ', `${key}:${j}`)
                                 scanLog.innerText = `Scanning: ${key}:${j}`
-                                await new Promise(r => setTimeout(r, 10));
-                                fetchPromise(`${key}:${j}`).catch(err => { })
+                                await new Promise(r => setTimeout(r, 1));
+                                arr.push(fetchPromise(`${key}:${j}`).catch(err => { }))
                             }
                         }
-                    })
+                    }))
+            console.log('awaiting promises', key)
+            await Promise.allSettled(arr)
+            arr = []
         } catch (err) { console.log(err) }
     }
     scanLog.innerText = `Scanning: Done`
