@@ -65,7 +65,6 @@ The plan now is to move the site to a server side backend running on a LXC proxm
 
 To start editing
 
-* Start LiveServer, Host IP is http://10.1.1.2:5500/index.html
 * Start Sass, sass --watch input.scss styles.css
 * Try not to procrastonate
 
@@ -96,7 +95,7 @@ I am currently unsure if I will combine the PREACT app and the scanning API but 
   * [ ] Show blacklist
 * [ ] Display current api activity (current scan/ what is in progress)
 
-#### PREACT
+#### HTMX
 * [ ] Index
   * [ ] GET status and display in header (I hear websockets are good)
   * [ ] settings template
@@ -154,5 +153,6 @@ Ubuntu 22.04
   * node
   * npm
     * preact
+    * nodemon
 
 </details>
