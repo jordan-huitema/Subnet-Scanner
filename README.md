@@ -73,4 +73,86 @@ To start editing
 <details open>
 <summary>V2</summary>
 
+## Plan
+
+I planning to use PREACT to create a nodeJS server on my proxmox server. This will run in a linux container and be hosted on scan.local, I will run the scanner api on scan.local/api. I would like to use a mongodb Database for my api but I think ill just use JSON files for now to keep the complexity down.
+
+I will be salvaging some code from V1 but plan on mostly rewriting it now that I have a better idea of what I want.
+
+I am currently unsure if I will combine the PREACT app and the scanning API but for now ill assume I will keep them seperate.
+
+#### GUI
+* [ ] Display Tiles for each site or service on local network
+  * [ ] Display site title
+  * [ ] Display site icon
+  * [ ] Display site address
+  * [ ] Link to site
+  * [ ] Show connection status of site
+  * [ ] Display remove button to remove tile and add to blacklist
+* [ ] Provide Settings menu
+  * [ ] Scan IP range
+  * [ ] Mannually set network addresses for tiles
+  * [ ] Define port range
+  * [ ] Show blacklist
+* [ ] Display current api activity (current scan/ what is in progress)
+
+#### PREACT
+* [ ] Index
+  * [ ] GET status and display in header (I hear websockets are good)
+  * [ ] settings template
+    * [ ] GET current static ips
+    * [ ] POST static ip add
+    * [ ] POST static ip del
+    * [ ] POST scan request
+    * [ ] POST scan range
+    * [ ] POST scan range + port restriction
+    * [ ] GET current blacklist
+    * [ ] POST blacklist add
+    * [ ] POST blacklist del
+  * [ ] tile template
+    * [ ] GET tiles based off static ip settings
+    * [ ] GET tile connection status
+    * [ ] POST static ip add
+    * [ ] POST static ip del
+    * [ ] POST blacklist add
+    * [ ] POST blacklist del
+
+#### API
+* [ ] /scan
+  * [ ] ?addr="https://PiHole.local/admin/login","https://10.1.1.10:8006"
+        return [{satus, title, icon, address}]
+        Accept 1 or more addresses
+  * [ ] ?ip="10.1.1.2","10.1.1.5"
+        return [{satus, title, icon, address}]
+        Accept 1 or more ips
+    * [ ] ?ipRange=true
+          set 2 ip's as a range to scan between
+  * [ ] ?port="5500","8080"
+        Set port restriction on scan
+    * [ ] portRange=true
+          Set 2 ports as a restriction range
+* [ ] /list
+      return [{satus, title, icon, address}]
+      List all known address
+  * [ ] ?add="{satus, title, icon, address},{satus, title, icon, address}"
+        return 200
+  * [ ] ?del="address"
+        return 200
+* [ ] /blacklist
+      return ["10.1.1.0:0000"]
+      list all items on blacklist
+  * [ ] ?add="address"
+        return 200
+  * [ ] ?del="address"
+        return 200
+
+
+## Requierments
+
+Ubuntu 22.04
+  * git
+  * node
+  * npm
+    * preact
+
 </details>
