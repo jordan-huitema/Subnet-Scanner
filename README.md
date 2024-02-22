@@ -151,8 +151,7 @@ I am currently unsure if I will combine the PREACT app and the scanning API but 
 Ubuntu 22.04
   * git
   * node
+  * sass
   * npm
-    * preact
-    * nodemon
 
 </details>
