@@ -72,6 +72,22 @@ To start editing
 <details open>
 <summary>V2</summary>
 
+## The Fast Pug Stack
+
+I will be using
+
+<img src="https://raw.githubusercontent.com/bigskysoftware/htmx/master/www/static/img/htmx_logo.1.png" height="50" />
+
+for my front end
+
+<img src="https://fastify.io/img/logos/fastify-black.svg" height="50" />
+
+Fastify for my backend and 
+
+<img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/pugjs_logo_icon_168890.png" height="50" />
+
+Pug for my template rendering
+
 ## Plan
 
 I planning to use PREACT to create a nodeJS server on my proxmox server. This will run in a linux container and be hosted on scan.local, I will run the scanner api on scan.local/api. I would like to use a mongodb Database for my api but I think ill just use JSON files for now to keep the complexity down.
@@ -144,14 +160,5 @@ I am currently unsure if I will combine the PREACT app and the scanning API but 
         return 200
   * [ ] ?del="address"
         return 200
-
-
-## Requierments
-
-Ubuntu 22.04
-  * git
-  * node
-  * sass
-  * npm
 
 </details>

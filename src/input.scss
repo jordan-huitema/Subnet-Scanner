@@ -51,7 +51,8 @@ body {
         border-radius: 0 0 5px 5px;
         color: white;
 
-        a {
+        h2 {
+            margin: 0;
             width: 50px;
             height: 50px;
             text-align: center;
@@ -61,7 +62,7 @@ body {
             background-color: #00000000;
         }
 
-        a:hover {
+        h2:hover {
             transform: scale(1.1, 1.1);
             animation: rotating 2s linear infinite;
         }
