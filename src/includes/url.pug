@@ -1,0 +1,12 @@
+div.urlForm()
+    input(class="ip" type="url" disabled=true)
+    input(class="port" type="number" disabled=true)
+    button(hx-delete="/del/url"
+        hx-target="closest div"
+        hx-swap="delete") X
+div.urlForm()
+        input(class="ip" type="url" placeholder="example.local")
+        input(class="port" type="number" placeholder="9999")
+        button(hx-get="/component/url"
+            hx-target="closest div"
+            hx-swap="outerHTML") Add

@@ -1,0 +1,7 @@
+div.ipForm()
+    input(class="ip" type="text" placeholder="000.000.000.000")
+    p to 
+    input(class="ip" type="text" placeholder="000.000.000.000")
+    button(hx-post="/component/ipRange"
+        hx-target="closest div"
+        hx-swap="afterend") Add
